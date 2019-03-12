@@ -5,6 +5,7 @@
   // Retrieve the new trains from the database and show in schedule table
   // Calculate when the next train will arrive relative to the current time
   // Make sure users from different machines can view the same train times
+  // added to portfolio at https://missybarringer.github.io/
   
   // Initialize Firebase
   var config = {
