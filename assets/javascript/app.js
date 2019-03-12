@@ -38,7 +38,7 @@
       // uploads the train data to the database
       database.ref().push(newTrain);
 
-      alert("success");
+      alert("Your train has been added!");
 
       // clears all of the text boxes
       $("#train-name-input").val("");
@@ -56,15 +56,24 @@ database.ref().on("child_added", function(childSnapshot) {
     var trainDestination = childSnapshot.val().destination;
     var trainFirstTime = childSnapshot.val().firstTime;
     var trainFrequency = childSnapshot.val().frequency;
-    var nextArrival = "13:00";
-    var minAway = "10";
-
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(trainFirstTime, "HH:mm").subtract(1, "years");
+    // difference between times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    // time apart (remainder)
+    var tRemainder = diffTime % trainFrequency;
+    //minutes til train
+    var minAway = trainFrequency - tRemainder;
+    // next train with formatting
+    var nextTArrival = moment().add(minAway, "minutes");
+    var nextTrainArrival = moment(nextTArrival).format("hh:mm");
+    console.log(tRemainder);
     //create the new row
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(trainDestination),
         $("<td>").text(trainFrequency),
-        $("<td>").text(nextArrival),
+        $("<td>").text(nextTrainArrival),
         $("<td>").text(minAway)
     );
     // append the new row to the table
