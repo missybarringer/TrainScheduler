@@ -50,7 +50,6 @@
 
 // create Firebase event for adding employee to the database and a row in the html when user adds a train & submits
 database.ref().on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
 
     // store everything into a variable
     var trainName = childSnapshot.val().name;
@@ -68,7 +67,6 @@ database.ref().on("child_added", function(childSnapshot) {
     // next train with formatting
     var nextTArrival = moment().add(minAway, "minutes");
     var nextTrainArrival = moment(nextTArrival).format("hh:mm");
-    console.log(tRemainder);
     //create the new row
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
@@ -77,7 +75,7 @@ database.ref().on("child_added", function(childSnapshot) {
         $("<td>").text(nextTrainArrival),
         $("<td>").text(minAway)
     );
-    // append the new row to the table
+    // append the new row to the table body
     $("#train-table > tbody").append(newRow);
 
 });
