@@ -4,46 +4,40 @@
 @missybarringer
 ____________________________________
 ## Technology
-* CSS3, HTML5, Javascript, Bootstrap, jQuery, Firebase
+* CSS3, HTML5, Javascript, Bootstrap, jQuery, Firebase, Moment.js
 * [GitHub Repository Link](https://github.com/missybarringer/TrainScheduler)
 * [Website published here](https://missybarringer.github.io/TrainScheduler/)
 ____________________________________
-## About - Vandy Bootcamp assignment with the following instructions...
-### Overview
+### Overview of the problem
 
-In this assignment, you'll create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
+Create a train schedule application that incorporates Firebase to host arrival and departure data. The app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
 ### Instructions
 
-* Make sure that your app suits this basic spec:
-  
   * When adding trains, administrators should be able to submit the following:
-    
     * Train Name
-    
     * Destination 
-    
     * First Train Time -- in military time
-    
     * Frequency -- in minutes
-  
   * Code this app to calculate when the next train will arrive; this should be relative to the current time.
-  
   * Users from many different machines must be able to view same train times.
+
+### Solution
+__________________________________
+  * Create a Realtime Firebase database in test mode with R/W access
+  * Create a bootstrap card for the dynamic train schedule table
+  * Create a bootstrap card for the new train entry form
+  * Create a button for adding new trains - then update the html & database
+  * Retrieve the new trains from the database and show in schedule table
+  * Calculate when the next train will arrive relative to the current time
+  * Make sure users from different machines can view the same train times
   
-  * Styling and theme are completely up to you. Get Creative!
-
-### Bonus (Extra Challenges)
-
-* Consider updating your "minutes to arrival" and "next train time" text once every minute. This is significantly more challenging; only attempt this if you've completed the actual activity and committed it somewhere on GitHub for safekeeping (and maybe create a second GitHub repo).
-
-* Try adding `update` and `remove` buttons for each train. Let the user edit the row's elements-- allow them to change a train's Name, Destination and Arrival Time (and then, by relation, minutes to arrival).
-
-* As a final challenge, make it so that only users who log into the site with their Google or GitHub accounts can use your site. You'll need to read up on Firebase authentication for this bonus exercise.
-
-### Add To Your Portfolio
-
-After completing the homework please add the piece to your portfolio. Make sure to add a link to your updated portfolio in the comments section of your homework so the TAs can easily ensure you completed this step when they are grading the assignment. To receive an 'A' on any assignment, you must link to it from your portfolio.
+### Technical Approach
+__________________________________
+* Created the firebase database & initialized it in the JS
+* Got the user's form input for a new train and on submit created a "temporary" object to hold it, then pushed it to the database
+* Created a firebase event to add the train to the db and a row in the html on submission using a childSnapshot passed into the function
+* Within that function determined the time values using moment.js
 __________________________________
 #### Contributors
 *background Photo by Ugur Akdemir on Unsplash
@@ -57,7 +51,6 @@ For direct contributions, please fork the repository and file a pull request.
 ____________________________________
 ## Contact
 * e-mail: barringer.margaret@gmail.com
-* Twitter: @goatfeatherfarm
-* Facebook: @goatfeatherfarm
-* Instagram: @goatfeatherfarm
+* Twitter: @WebWabiSabi
+* Instagram: @WebWabiSabi
 * Added to [Personal Portfolio webpage](https://missybarringer.github.io/)
